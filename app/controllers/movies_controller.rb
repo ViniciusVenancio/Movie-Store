@@ -2,11 +2,11 @@ class MoviesController < ApplicationController
   before_action :set_movie, only: [:show, :edit, :update, :destroy]
 
   def index
-    if params[:keyword]
-      @movies = Movie.where('name LIKE ?', "%#{params[:keyword]}%")
-    else
-      @movies = Movie.all
-    end
+    @movies = if params[:keyword]
+                Movie.where('name LIKE ?', "%#{params[:keyword]}%")
+              else
+                Movie.all
+              end
   end
 
   def show

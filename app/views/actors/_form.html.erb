@@ -1,0 +1,13 @@
+<%= form_for(@actor) do |f| %>
+
+  Nome: <%= f.text_field :name %>
+  Idade: <%= f.number_field :age %><br>
+  Filme: 
+  <%= f.fields_for :movie do |m| %>
+    Nome: <%= m.text_field :name %>
+    Valor: <%= m.text_field :price %>
+    Ano: <%= m.number_field :year %>
+    Descrição: <%= m.text_area :description %>
+  <% end %>
+  <%= f.submit('Gravar') %>
+<% end %>
